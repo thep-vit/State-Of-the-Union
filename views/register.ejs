@@ -72,7 +72,9 @@
               placeholder="Confirm Password"
               value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
             />
-          </div>
+          </div><br />
+          <input type="checkbox" onclick="Toggle()"> 
+        <b>Show Password</b>
           <button type="submit" class="btn btn-primary btn-block">
             Register
           </button>
@@ -82,3 +84,25 @@
     </div>
   </div>
 </div>
+
+
+<script> 
+  // Change the type of input to password or text 
+      function Toggle() { 
+          var pass1 = document.getElementById("password"); 
+          var pass2 = document.getElementById("password2"); 
+          if (pass1.type === "password") { 
+              pass1.type = "text"; 
+          } 
+          else { 
+              pass1.type = "password"; 
+          }
+          
+          if (pass2.type === "password") { 
+              pass2.type = "text"; 
+          } 
+          else { 
+              pass2.type = "password"; 
+          }
+      } 
+</script> 

@@ -36,7 +36,7 @@
               type="email"
               id="email"
               name="email"
-              class="form-control"
+              class="form-control cust"
               placeholder="Enter Email"
               value="<%= typeof email != 'undefined' ? email : '' %>"
             />
@@ -51,7 +51,9 @@
               placeholder="Create Password"
               value="<%= typeof password != 'undefined' ? password : '' %>"
             />
-          </div>
+          </div><br />
+          <input type="checkbox" onclick="Toggle()"> 
+          <b>Show Password</b>
           <button type="submit" class="btn btn-primary btn-block">
             Login
           </button>
@@ -61,3 +63,16 @@
     </div>
   </div>
 </div>
+
+<script> 
+  // Change the type of input to password or text 
+      function Toggle() { 
+          var temp = document.getElementById("password"); 
+          if (temp.type === "password") { 
+              temp.type = "text"; 
+          } 
+          else { 
+              temp.type = "password"; 
+          } 
+      } 
+</script> 
