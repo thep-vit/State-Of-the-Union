@@ -157,6 +157,17 @@
   .fa-bars{
     color: #f6f6f6;
   }
+  .tech{
+    position: fixed;
+    right: 0;
+  }
+  footer{
+    background-color: #333;
+  overflow: hidden;
+  position: fixed !important;
+  bottom: 0 !important;
+  width: 100%;
+  }
   @keyframes slide {
     0% {
       opacity: 0;
@@ -196,6 +207,11 @@
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <div><%- body%></div>
+  <footer class='navbar navbar-expand-sm bg-grey navbar-grey'>
+    <strong>&copy; The Hindu Education Plus Club 2012-2020. All Rights Reserved.
+    </strong>
+    <strong class='tech'>For any technical difficulties, contact : tech@thepcvit.com.</strong>
+  </footer>
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
