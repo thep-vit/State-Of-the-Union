@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 const fs = require('fs');
+const path = require('path');
 
 
 const Article = require('../models/Article');
@@ -99,9 +100,9 @@ router.post("/articles/downloads/:id", async (req,res) => {
       } else {
         const dr = new Buffer(article.draft, 'base64')
          fs.writeFileSync(`${article.auth}.pdf`, dr, 'base64');
+         res.sendFile(path.join(__dirname, '../') + `${article.auth}.pdf`);
       }
   });
-  res.redirect('/articles/list');
 })
 
 module.exports = router;
