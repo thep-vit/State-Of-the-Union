@@ -49,7 +49,7 @@ router.post('/',  async (req, res) => {
                             res.send(error);
                         }else{
                           console.log('Email sent: ' + info.response);
-                          res.status(200).redirect('recover/reset-message')
+                          res.status(200).redirect('/recover/reset-message')
                         }
 
                       })
