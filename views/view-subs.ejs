@@ -1,8 +1,42 @@
-<div class="ui main text container">
-    <div class="ui huge header"><em>R.G. @ </em>Blogs</div>
-    <div class="ui top  attached segment">
-        <div class="ui divided items">
-            <%= articles %>
-        </div>
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    
+    <a class="navbar-brand js-scroll-trigger" target='_blank' href="https://www.thepcvit.com">THEPC</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/articles/list">View Drafts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/users/logout">logout</a>
+        </li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid ml-auto">
+  <h1 class='bg-light'>All Submissions</h1>
+  <% articles.forEach(function(article){ %>
+    <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><%=article.auth%></h4>
+          <p class="card-text"><%= article.email %></p>
+          <form action='/articles/downloads/<%= article._id %>' method="POST">
+            <button class="btn btn-primary" type = 'submit'>Download Draft</button>
+          </form>
+        </div>
+      </div>
+<% }) %>
 </div>
+

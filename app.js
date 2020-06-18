@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -43,6 +44,9 @@ app.use(
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+//File uploads
+app.use(fileUpload());
 
 // Connect flash
 app.use(flash());

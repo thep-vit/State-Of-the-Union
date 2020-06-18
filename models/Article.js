@@ -12,6 +12,14 @@ const articleSchema = new mongoose.Schema({
     auth: {
         type: String,
         required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    draft: {
+        type: Buffer,
+        required:false
     }
 });
 
