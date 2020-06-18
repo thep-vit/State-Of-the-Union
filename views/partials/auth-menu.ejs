@@ -11,22 +11,20 @@
             <a class="nav-link js-scroll-trigger p-3" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger p-3" href="/users/login">Login</a>
+            <a class="nav-link js-scroll-trigger p-3" href="/rules">Rules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger p-3" href="/dashboard">Dashboard</a>
+          </li>
+          <% if (user.member){ %>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger p-3" href="/articles/list">View Drafts</a>
+          </li>
+          <%}%>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger p-3" href="/users/logout">logout</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-    
-    <div id="dashboard" class="container-fluid ml-auto">
-        <h1 class="text-left mb-3">
-            <i class="fas fa-sync"></i> Reset Password
-          </h1><br />        
-      <div class="alert alert-success"><p >Check your email for the password reset link.</p></div>    
-  
-      <a href="/" class="btn btn-primary" style="float: left;">Go Back to Homepage</a>
-      &nbsp;&nbsp;
-    </div>
-    
-    
-    

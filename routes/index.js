@@ -30,6 +30,13 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
   })
 );
 
+//Rules
+router.get('/rules', ensureAuthenticated, (req, res) => {
+  res.render('rules', {
+    user: req.user
+  })
+})
+
 router.post('/submit', ensureAuthenticated,  async (req, res) =>{
   // const buffer = await sharp(req.file.buffer).resize({ height: 250, width: 250}).pdf().toBuffer()
 
