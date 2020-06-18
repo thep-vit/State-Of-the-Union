@@ -12,6 +12,7 @@ require('./config/passport')(passport);
 
 // DB Config
 const db = require('./config/keys').mongoURI;
+console.log(db)
 
 // Connect to MongoDB
 mongoose
@@ -58,6 +59,7 @@ app.use(function(req, res, next) {
 // Routes
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
+app.use('/recover', require('./routes/reset.js'));
 
 const PORT = process.env.PORT || 3000;
 
