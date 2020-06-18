@@ -45,19 +45,6 @@ UserSchema.statics.findByCredentials = async (email, password) => {
 
 }
 
-//hash plain text password before save
-UserSchema.pre("save", async function(next) {
-  const user = this
-  // console.log("this prints before saving")
-
-  if (user.isModified("password")) {
-      user.password = await bcrypt.hash(user.password, 8)
-  }
-  
-  next()
-
-})
-
 // return public profile whenever user info is returned ( hide password and token history)
 
 UserSchema.methods.toJSON = function () {

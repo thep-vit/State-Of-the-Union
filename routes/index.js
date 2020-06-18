@@ -56,4 +56,20 @@ router.post('/delete', ensureAuthenticated, async (req, res) => {
   } 
 })
 
+
+// GET all existing articles or query in the above format to sort results according to attributes.
+router.get("/articles/list", async (req,res) => {
+
+
+  const sort = {}
+
+  User.find({}, function(err, articles){
+      if(err){
+          console.log("ERROR!");
+      } else {
+         res.render("view-subs", {articles: articles}); 
+      }
+  });
+})
+
 module.exports = router;
