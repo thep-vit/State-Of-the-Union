@@ -80,7 +80,18 @@ UserSchema.methods.generatePasswordReset =  function(){
   this.resetPasswordExpires = Date.now() + 3600000;
 };
 
+//hash plain text password before save
+UserSchema.pre("save", async function(next) {
+  const user = this
+  // console.log("this prints before saving")
 
+  if (user.isModified("password")) {
+      user.password = await bcrypt.hash(user.password, 10)
+  }
+  
+  next()
+
+})
 
 const User = mongoose.model('User', UserSchema);
 

@@ -103,7 +103,7 @@ check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (val
         if(!foundUser){
             return res.status(401).json({message: 'Password reset token is invalid or has expired.'})
         }
-
+        
         //Set the new password
         foundUser.password = req.body.password;
         foundUser.resetPasswordToken = undefined;
