@@ -32,10 +32,25 @@
     margin-bottom: 30px;
   }  
   .jumbotron {
-    background-color: #2c2c2c;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1487281438332-b1dc4af0c5ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1080&q=80");
     color: #fff;
     padding: 100px 25px;
+    height: fit-content;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
     font-family: Montserrat, sans-serif;
+    font-weight: 500;
+  }
+  .hero-text{
+    font-weight:900;
+    font-size: 6em;
+    margin: 2em;
+    letter-spacing: 4px;
+  }
+  .hero-post{
+    font-size: 2.6em;
+    font-weight: 700;
   }
   .container-fluid {
     padding: 60px 50px;
@@ -220,6 +235,24 @@
     color: #2c2c2c;
     font-size: 3.4em;
   }
+  .intro-card{
+    background-color: hsl(0, 0%, 27%);
+    color: white !important;
+    box-shadow: 0 4px 8px 0 grey;
+    padding: 20px 40px;
+    width: fit-content;
+    margin-bottom: 8%;
+  }
+  .intro-card h2, h4{
+    color: white;
+  }
+  .contact-cards{
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
   @keyframes slide {
     0% {
       opacity: 0;
@@ -240,7 +273,28 @@
       -webkit-transform: translateY(0%);
     }
   }
-  @media screen and (max-width: 768px) {
+
+  @media screen and (min-width: 1024px) {
+    .hide-lg{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .hero-text{
+      font-size: 4em;
+      margin: auto;
+    }
+    .hero-post{
+      font-size: 1em;
+      margin: auto;
+    }
+    .logo {
+      display: inline-block;
+      font-size: 150px;
+    }
+    .hide-sm{
+      display: none;
+    }
     .col-sm-4 {
       text-align: center;
       margin: 25px 0;
@@ -251,6 +305,7 @@
     }
   }
   @media screen and (max-width: 480px) {
+    
     .logo {
       font-size: 150px;
     }
@@ -259,10 +314,16 @@
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <div><%- body%></div>
-  <footer class='navbar navbar-expand-sm bg-grey navbar-grey'>
+
+  <footer class='navbar navbar-expand-sm bg-grey navbar-grey hide-sm'>
     <strong>&copy; The Hindu Education Plus Club 2012-2020. All Rights Reserved.
     </strong>
-    <strong class='tech'>For any technical difficulties, contact : tech@thepcvit.com.</strong>
+    <!-- <strong class='tech'>For any technical difficulties, contact : tech@thepcvit.com.</strong> -->
+  </footer>
+  <footer class='navbar navbar-expand-sm bg-grey navbar-grey hide-lg'>
+    <strong>&copy; The Hindu Education Plus Club 2012-2020. All Rights Reserved.
+    </strong>
+    <!-- <strong class='tech'>For any technical difficulties, contact : tech@thepcvit.com.</strong> -->
   </footer>
 <script>
 $(document).ready(function(){
