@@ -56,6 +56,7 @@ router.post('/register', (req, res) => {
           password,
           submitted
         });
+        newUser.save();
         req.flash(
           'success_msg',
           'You are now registered and can log in'
