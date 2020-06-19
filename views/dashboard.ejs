@@ -3,7 +3,7 @@
 <div id="dashboard" class="container-fluid ml-auto">
   <h1 class="dash mt-4">Dashboard</h1>
   <h1 class='sub-head mt-4 p-2'><i class='fas fa-user'></i> Welcome <strong><%= user.name %></strong></h1>
-<% if(!user.submitted){ %>
+<!-- <% if(!user.submitted){ %>
 <form action = "/submit" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label class="col-form-label col-form-label-lg" for="inputLarge">Union Chosen</label>
@@ -37,7 +37,10 @@
     <button type="submit" class="btn btn-danger">Delete Existing Speech </button>
   </form>
   
-<%}%>
+<%}%> -->
+<div class="alert alert-warning">
+  <h2><i class='fas fa-exclamation-triangle'></i> Submissions open on 21st June.</h2>
+</div>
 </div>
 
 
