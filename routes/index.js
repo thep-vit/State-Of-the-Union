@@ -30,6 +30,13 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
   })
 );
 
+// Prob-statements
+router.get('/problem-statements', ensureAuthenticated, (req, res) =>
+  res.render('problem-statements', {
+    user: req.user
+  })
+);
+
 //Rules
 router.get('/rules', ensureAuthenticated, (req, res) => {
   res.render('rules', {
