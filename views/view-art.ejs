@@ -1,0 +1,15 @@
+<%- include('./partials/auth-menu') %>
+
+  <div class="container-fluid ml-auto">
+    <h1 class='bg-light mt-4 dash p-3'><%=article.auth%>'s Submission</h1>
+    <h1 class='wel-fol mt-4'><%=article.auth%>'s registered email is <span class='emphasis'><%= user.email%></span>.</h1>
+    <p class='content'><%= article.acontent %></p>
+    <div class="subs-buttons">
+        <form action='/articles/downloads/<%= article._id %>' method="POST">
+          <button class="btn btn-primary" type = 'submit'>Download Draft</button>
+        </form>&nbsp;&nbsp;
+          <a href='/articles/list'><button class="btn btn-primary" type = 'submit'>Go back to all Submissions</button></a>
+      </div>
+  </div>
+  
+  

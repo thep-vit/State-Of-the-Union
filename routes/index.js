@@ -91,7 +91,7 @@ router.post('/delete', ensureAuthenticated, async (req, res) => {
 
 
 // GET all existing articles or query in the above format to sort results according to attributes.
-router.get("/articles/list", async (req,res) => {
+router.get("/articles/list", ensureAuthenticated, async (req,res) => {
 
 
   const sort = {}
@@ -100,7 +100,7 @@ router.get("/articles/list", async (req,res) => {
       if(err){
           console.log("ERROR!");
       } else {
-         res.render("view-subs", {articles: articles}); 
+         res.render("view-subs", {articles: articles, user:  req.user}); 
         // res.send(articles[0].draft.buffer.data)
         // fs.writeFileSync(`${article.auth}1.pdf`, article.draft.data.buffer);
       }
@@ -115,6 +115,17 @@ router.post("/articles/downloads/:id", async (req,res) => {
         const dr = new Buffer(article.draft, 'base64')
          fs.writeFileSync(`${article.auth}.pdf`, dr, 'base64');
          res.sendFile(path.join(__dirname, '../') + `${article.auth}.pdf`);
+      }
+  });
+})
+
+router.post("/articles/view/:id",ensureAuthenticated, async (req,res) => {
+  Article.findOne({_id: req.params.id}, async (err, article) => {
+      if(err){
+          console.log("ERROR!");
+      } else {
+        user = await User.findOne({name: article.auth});
+        res.render('view-art', {article: article})
       }
   });
 })
