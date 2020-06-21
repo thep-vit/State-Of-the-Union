@@ -56,10 +56,15 @@ router.post('/submit', ensureAuthenticated,  async (req, res) =>{
       const auth = user.name;
       const email = user.email;
       const draft = req.files.draft.data;
-      const {atitle, acontent} = req.body;
-      const newArticle = new Article({ atitle, acontent, auth, email, draft});
-      await newArticle.save();
-      await  user.save();
+      console.log(Buffer.byteLength(draft));
+      if(Buffer.byteLength(draft) > 1000000){
+        return res.render('file-large');
+      }else{
+        const {atitle, acontent} = req.body;
+        const newArticle = new Article({ atitle, acontent, auth, email, draft});
+        await newArticle.save();
+        await  user.save();
+      }
   }
   else{
     return res.status(401).send('Delete existing submission to add another one.');

@@ -5,6 +5,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -30,6 +31,11 @@ app.set('view engine', 'ejs');
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '2mb'}));
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+limit: '2mb',
+extended: true
+})); 
 
 // Express session
 app.use(
