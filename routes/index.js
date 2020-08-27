@@ -51,17 +51,20 @@ router.post('/submit', ensureAuthenticated,  async (req, res) =>{
     const user = await User.findById(req.user.id).select('-password');
 
     if(!user.submitted){
-      console.log(req.files);
+      // console.log(req.files);
       user.submitted = true;
       const auth = user.name;
       const email = user.email;
       const draft = req.files.draft.data;
+      let entryType = req.files.draft.mimetype;
+      entryType = entryType.split('/')[1];
+      console.log(entryType);
       console.log(Buffer.byteLength(draft));
       if(Buffer.byteLength(draft) > 10000000){
         return res.render('file-large');
       }else{
         const {atitle, acontent} = req.body;
-        const newArticle = new Article({ atitle, acontent, auth, email, draft});
+        const newArticle = new Article({ atitle, acontent, auth, email, draft, entryType});
         await newArticle.save();
         await  user.save();
       }
@@ -120,9 +123,18 @@ router.post("/articles/downloads/:id", async (req,res) => {
         // const dr = new Buffer(article.draft, 'base64')
         //  fs.writeFileSync(`${article.auth}.pdf`, dr, 'base64');
         //  res.sendFile(path.join(__dirname, '../') + `${article.auth}.pdf`);
-        res.set("Content-Type","application/pdf")
-        // console.log(user.avatar)
-        res.send(article.draft)
+        if(article.entryType == 'jpeg' || article.entryType == 'png' || article.entryType == 'jpg'){
+          res.set("Content-Type","image/png")
+        res.send(article.draft)  
+        }else if(article.entryType == 'pdf'){
+          res.set("Content-Type","application/pdf")
+          res.send(article.draft)
+        }else if(article.entryType == 'mpeg'){
+          res.set("Content-Type","audio/basic")
+          res.send(article.draft)
+        }else{
+          res.send("Participant uploaded unsupported file format!");
+        }
       }
   });
 })
