@@ -20,6 +20,10 @@ const articleSchema = new mongoose.Schema({
     draft: {
         type: Buffer,
         required:false
+    },
+    entryType:{
+        type: String,
+        required: true
     }
 });
 

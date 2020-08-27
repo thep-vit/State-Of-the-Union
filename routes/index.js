@@ -5,8 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 
-const Article = require('../models/Article');
 const User = require('../models/User');
+const Article = require('../models/Article');
 
 // const upload = multer({
 //   limits: {
@@ -51,13 +51,13 @@ router.post('/submit', ensureAuthenticated,  async (req, res) =>{
     const user = await User.findById(req.user.id).select('-password');
 
     if(!user.submitted){
-
+      console.log(req.files);
       user.submitted = true;
       const auth = user.name;
       const email = user.email;
       const draft = req.files.draft.data;
       console.log(Buffer.byteLength(draft));
-      if(Buffer.byteLength(draft) > 1000000){
+      if(Buffer.byteLength(draft) > 10000000){
         return res.render('file-large');
       }else{
         const {atitle, acontent} = req.body;
@@ -117,9 +117,12 @@ router.post("/articles/downloads/:id", async (req,res) => {
       if(err){
           console.log("ERROR!");
       } else {
-        const dr = new Buffer(article.draft, 'base64')
-         fs.writeFileSync(`${article.auth}.pdf`, dr, 'base64');
-         res.sendFile(path.join(__dirname, '../') + `${article.auth}.pdf`);
+        // const dr = new Buffer(article.draft, 'base64')
+        //  fs.writeFileSync(`${article.auth}.pdf`, dr, 'base64');
+        //  res.sendFile(path.join(__dirname, '../') + `${article.auth}.pdf`);
+        res.set("Content-Type","application/pdf")
+        // console.log(user.avatar)
+        res.send(article.draft)
       }
   });
 })
