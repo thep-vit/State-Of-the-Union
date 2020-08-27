@@ -31,6 +31,7 @@
     <div class="card">
         <div class="card-body">
           <h4 class="card-title sub-head"><%=article.auth%></h4>
+          <h5 class="card-title sub-head">File Type: <span class='Cont'><%=article.entryType%></span></h5>
           <p class="card-text wel-fol"><%= article.email %></p>
           <div class="subs-buttons">
             <form action='/articles/downloads/<%= article._id %>' method="POST">

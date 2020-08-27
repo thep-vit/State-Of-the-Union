@@ -120,9 +120,6 @@ router.post("/articles/downloads/:id", async (req,res) => {
       if(err){
           console.log("ERROR!");
       } else {
-        // const dr = new Buffer(article.draft, 'base64')
-        //  fs.writeFileSync(`${article.auth}.pdf`, dr, 'base64');
-        //  res.sendFile(path.join(__dirname, '../') + `${article.auth}.pdf`);
         if(article.entryType == 'jpeg' || article.entryType == 'png' || article.entryType == 'jpg'){
           res.set("Content-Type","image/png")
         res.send(article.draft)  
