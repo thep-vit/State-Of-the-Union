@@ -63,8 +63,8 @@ router.post('/submit', ensureAuthenticated,  async (req, res) =>{
       if(Buffer.byteLength(draft) > 10000000){
         return res.render('file-large');
       }else{
-        const {atitle, acontent} = req.body;
-        const newArticle = new Article({ atitle, acontent, auth, email, draft, entryType});
+        const {acontent} = req.body;
+        const newArticle = new Article({ acontent, auth, email, draft, entryType});
         await newArticle.save();
         await  user.save();
       }
