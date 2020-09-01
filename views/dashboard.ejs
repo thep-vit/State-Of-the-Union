@@ -5,6 +5,7 @@
   <h1 class='sub-head mt-4 p-2'><i class='fas fa-user'></i> Welcome <strong><%= user.name %></strong></h1>
 <% if(!user.submitted){ %>
 <h3 class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Use Times New Roman font with a font size of 12 in your draft. </h3>
+<h3 class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Submissions will be opened on 06-09-2020. </h3>
 <form action = "/submit" method="POST" enctype="multipart/form-data">
   <!-- <div class="form-group">
     <label class="col-form-label col-form-label-lg" for="inputLarge">Union Chosen</label>
@@ -27,7 +28,7 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" disabled>Submit</button>
   </form>
 <% }%>
 
