@@ -2,6 +2,11 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const {ensureAuthenticated} = require("../config/auth");
+const moment = require('moment-timezone')
+
+
+moment.tz.add("Asia/Calcutta|HMT BURT IST IST|-5R.k -6u -5u -6u|01232|-18LFR.k 1unn.k HB0 7zX0");
+moment.tz.link("Asia/Calcutta|Asia/Kolkata");
 
 const User = require('../models/User')
 
@@ -26,6 +31,7 @@ router.get('/CERegCount', ensureAuthenticated, async (req, res) => {
     const count = await User.find({}).count();
     const latestRegs = await User.find({}).sort('-date').limit(10);
     const lastReg = await User.find({}).sort('-date').limit(1);
+    lastReg = lastReg
     console.log(lastReg);
     res.render('data', {count, latestRegs, eName: "Creative Expression", eWeb: "https://creative-expression.herokuapp.com", user: req.user, latestDate: lastReg[0].date});
 });
