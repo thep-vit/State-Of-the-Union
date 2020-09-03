@@ -1,5 +1,5 @@
 const Article = require("../models/Article");
-const auth = require("../middleware/auth");
+const {ensureAuthenticated} = require("../config/auth");
 const flash = require('connect-flash');
 const express = require("express");
 const sharp = require("sharp")
@@ -21,7 +21,7 @@ const upload = multer({
 })
 
 // POST new article
-router.post("/",auth, upload.single("picture"), async(req,res)=>{
+router.post("/",ensureAuthenticated, upload.single("picture"), async(req,res)=>{
     // console.log("Before Post Article")
     // console.log("req body",req.body)
     const buffer = await sharp(req.file.buffer).resize({ height: 250, width: 250}).png().toBuffer()
@@ -47,7 +47,7 @@ router.post("/",auth, upload.single("picture"), async(req,res)=>{
 // GET /tasks?sortBy=createdAt:asc
 
 // GET all existing articles or query in the above format to sort results according to attributes.
-router.get("/list", auth, async (req,res) => {
+router.get("/list", ensureAuthenticated, async (req,res) => {
 
 
     const sort = {}
@@ -63,7 +63,7 @@ router.get("/list", auth, async (req,res) => {
 
 
 // GET articles according to ID
-router.get("/:id",auth, async (req,res) => {
+router.get("/:id",ensureAuthenticated, async (req,res) => {
     const _id = req.params.id
 
     try {
