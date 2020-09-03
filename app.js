@@ -6,12 +6,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
-const moment = require('moment-timezone')
-
-
-moment.tz.add("Asia/Calcutta|HMT BURT IST IST|-5R.k -6u -5u -6u|01232|-18LFR.k 1unn.k HB0 7zX0");
-moment.tz.link("Asia/Calcutta|Asia/Kolkata");
-
 
 const app = express();
 
