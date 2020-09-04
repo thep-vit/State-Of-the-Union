@@ -2,6 +2,7 @@
 
 
 <div class="container-fluid ml-auto">
+  <% if(user.member){ %>
   <h1 class='bg-light mt-4 dash p-3'>All Submissions</h1>
   <% articles.forEach(function(article){ %>
     <div class="card">
@@ -19,6 +20,8 @@
           </div>
         </div>
       </div>
-<% }) %>
+<% })}else{ %>
+  <h4 class='alert alert-warning p-4' style="width: fit-content;"><i class="fas fa-exclamation-triangle"></i> Access Denied. You are not a member. Contact database administrator.</h4>
+  <% } %>
 </div>
 
