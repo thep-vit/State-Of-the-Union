@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 
