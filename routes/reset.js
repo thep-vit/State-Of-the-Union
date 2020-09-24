@@ -11,7 +11,7 @@ var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'abhinavgorantla0613@gmail.com',
-      pass: 'kjvebhnpgijovmpt'
+      pass: 'mvybpwrknbqctobd'
     }
   });
 

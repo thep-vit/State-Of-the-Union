@@ -59,6 +59,9 @@ router.post('/submit', ensureAuthenticated,  async (req, res) =>{
       let entryType = req.files.draft.mimetype;
       entryType = entryType.split('/')[1];
       console.log(entryType);
+      if(entryType !== 'pdf'){
+        return res.render('file-large');
+      }
       console.log(Buffer.byteLength(draft));
       if(Buffer.byteLength(draft) > 10000000){
         return res.render('file-large');
