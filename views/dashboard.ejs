@@ -4,8 +4,8 @@
   <h1 class="dash mt-4">Dashboard</h1>
   <h1 class='sub-head mt-4 p-2'><i class='fas fa-user'></i> Welcome <strong><%= user.name %></strong></h1>
 <% if(!user.submitted){ %>
-<h3 class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Use Times New Roman font with a font size of 12 in your draft. </h3>
-<h3 class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Submissions will be opened on 06-09-2020. </h3>
+<h3 class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Use Times New Roman font with a font size of 12 in your submission. </h3>
+<h3 class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Submissions will be opened on 28-09-2020. </h3>
 <form action = "/submit" method="POST" enctype="multipart/form-data">
   <!-- <div class="form-group">
     <label class="col-form-label col-form-label-lg" for="inputLarge">Union Chosen</label>
@@ -20,7 +20,7 @@
   <div class="form-group">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title"><div class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Only PDF, MP3 or image files files supported.</div></h4>
+        <h4 class="card-title"><div class="alert alert-warning"><i class='fas fa-exclamation-triangle'></i> Only PDF files supported.</div></h4>
         <h5 class='sub-head'>In case of any technical problems, contact us at <span class='emphasis'>tech@thepcvit.com</span>.</h5>
         <p class="card-text"><label class="col-form-label col-form-label-lg" for="inputLarge">Upload Your File</label></p>
         <input class="form-control form-control-lg" type="file" name="draft" id='draft' required disabled>
