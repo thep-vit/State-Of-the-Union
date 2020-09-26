@@ -5,7 +5,7 @@ const {ensureAuthenticated} = require("../config/auth")
 
 const User = require('../models/User')
 
-const creativeExpDB = "mongodb+srv://Abhinav123:Abhinav123@participant-data-ce.2z40r.mongodb.net/Participants?retryWrites=true&w=majority";
+const creativeExpDB = "mongodb+srv://Abhinav123:Abhinav123@tfe-participants.jybyd.mongodb.net/TFE-Participants?retryWrites=true&w=majority";
 
 
 router.get('/', ensureAuthenticated, (req, res) => {
@@ -28,7 +28,7 @@ router.get('/CERegCount', ensureAuthenticated, async (req, res) => {
     let lastReg = await User.find({}).sort('-date').limit(1);
     
     console.log(lastReg);
-    res.render('data', {count, latestRegs, eName: "Creative Expression", eWeb: "https://creative-expression.herokuapp.com", user: req.user, latestDate: lastReg[0].date});
+    res.render('data', {count, latestRegs, eName: "Creative Expression", eWeb: "https://fourth-estate.herokuapp.com", user: req.user, latestDate: lastReg[0].date});
 });
 
 module.exports = router
