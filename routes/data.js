@@ -28,7 +28,7 @@ router.get('/CERegCount', ensureAuthenticated, async (req, res) => {
     let lastReg = await User.find({}).sort('-date').limit(1);
     
     console.log(lastReg);
-    res.render('data', {count, latestRegs, eName: "Creative Expression", eWeb: "https://fourth-estate.herokuapp.com", user: req.user, latestDate: lastReg[0].date});
+    res.render('data', {count, latestRegs, eName: "Fourth Estate", eWeb: "https://fourth-estate.herokuapp.com", user: req.user, latestDate: lastReg[0].date});
 });
 
 module.exports = router
